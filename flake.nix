@@ -37,6 +37,7 @@
     nur,
     ...
   } @ inputs: let
+    selfPkgs = import ./nixos/pkgs;
     inherit (self) outputs;
   in {
     nixosConfigurations = {
