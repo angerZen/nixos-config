@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home-manager.users.angerzen.home.packages = with pkgs; [
+  home.packages = with pkgs; [
     qmk
     qmk_hid
   ];

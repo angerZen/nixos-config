@@ -102,14 +102,14 @@
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware = {
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
+    # bluetooth = {
+    #   enable = true;
+    #   powerOnBoot = true;
+    # };
     nvidia = {
       modesetting.enable = true;
       powerManagement.enable = true;
-      powerManagement.finegrained = true;
+      powerManagement.finegrained = false;
       open = false;
       nvidiaSettings = true;
       forceFullCompositionPipeline = true;
@@ -151,6 +151,9 @@
     streamdeck-ui = {
       enable = true;
       autoStart = true;
+    };
+    git = {
+      enable = true;
     };
   };
 

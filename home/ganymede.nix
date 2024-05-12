@@ -19,7 +19,7 @@
     ./games
 
     ./wayland/mako
-    ./wayland/swaylock
+    ./wayland/hyprlock
     ./wayland/waybar
     ./wayland/wlogout
     ./wayland/foot
