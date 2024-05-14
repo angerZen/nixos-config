@@ -46,6 +46,11 @@
         specialArgs = {inherit inputs outputs;};
         modules = [./nixos/ganymede/configuration.nix];
       };
+      io = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs outputs;};
+        modules = [./nixos/io/configuration.nix];
+      };
     };
 
     homeConfigurations = {
@@ -53,6 +58,11 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs outputs;};
         modules = [./home/ganymede.nix];
+      };
+      "angerzen@io" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {inherit inputs outputs;};
+        modules = [./home/io.nix];
       };
     };
   };
