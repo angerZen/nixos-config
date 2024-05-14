@@ -100,6 +100,10 @@
 
   services.xserver.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
+  services.displayManager.autoLogin = {
+    enable = true;
+    user = "angerzen";
+  };
 
   hardware = {
     # bluetooth = {

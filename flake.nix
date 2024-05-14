@@ -28,7 +28,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = {
+  outputs = inputs @ {
     self,
     nixpkgs,
     home-manager,
@@ -36,10 +36,7 @@
     nixos-hardware,
     nur,
     ...
-  } @ inputs: let
-    selfPkgs = import ./nixos/pkgs;
-    inherit (self) outputs;
-  in {
+  }: {
     nixosConfigurations = {
       ganymede = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

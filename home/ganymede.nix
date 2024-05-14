@@ -19,6 +19,7 @@
     ./games
 
     ./wayland/mako
+    ./wayland/hypridle
     ./wayland/hyprlock
     ./wayland/waybar
     ./wayland/wlogout
