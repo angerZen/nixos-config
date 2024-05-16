@@ -9,6 +9,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ../swww
   ];
 
   nixpkgs = {
@@ -144,7 +145,6 @@
 
   programs = {
     dconf.enable = true;
-    hyprland.enable = true;
     steam.enable = true;
     direnv.enable = true;
     # _1password.enable = true;

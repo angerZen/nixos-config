@@ -3,31 +3,23 @@
   inputs,
   ...
 }: {
+  imports = [
+    ./swww.nix
+  ];
+
   systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
 
   home.packages = with pkgs; [
     hyprpicker
-    hypridle
-    hyprlock
-    xdg-utils
-    inputs.hyprland-contrib.packages.${pkgs.system}.hyprprop
-    # xwaylandvideobridge
-
-    # Wallpaper deamon
-    swww
-    waypaper
-
-    # Screenshot and screen-record utility
-    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
-    wf-recorder
-
-    # Clipboard manager
+    hyprshot
+    hyprcursor
+    wlr-randr
+    wayland-utils
+    wayland-protocols
     wl-clipboard
-    cliphist
-
-    #Security
     mate.mate-polkit
   ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
