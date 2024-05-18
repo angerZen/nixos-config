@@ -18,23 +18,20 @@
 
     ./games
 
-    ./wayland/mako
-    ./wayland/hypridle
-    ./wayland/hyprlock
-    ./wayland/waybar
-    ./wayland/wlogout
-    ./wayland/foot
+    ./mako
+    ./waybar
+    ./wlogout
     ./wayland/rofi
 
     ./qmk
     ./vscode
-    ./utilities/git
+    ./git
     ./utilities/bat
     ./utilities/neofetch
     ./utilities/btop
 
-    ./theme/pywal
-    ./theme/gtk
+    ./pywal
+    ./gtk
   ];
 
   nixpkgs = {

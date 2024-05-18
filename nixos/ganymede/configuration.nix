@@ -8,8 +8,10 @@
   ...
 }: {
   imports = [
+    ../variables.nix
     ./hardware-configuration.nix
-    ../swww
+    ../hardware/nvidia.nix
+    ../programs/swww
   ];
 
   nixpkgs = {
@@ -68,12 +70,10 @@
   };
   # Set environment variables
   environment.variables = {
-    XDG_DATA_HOME = "$HOME/.local/share";
     MOZ_ENABLE_WAYLAND = "1";
     EDITOR = "kitty";
-    ANKI_WAYLAND = "1";
     DISABLE_QT5_COMPAT = "0";
-    # WLR_NO_HARDWARE_CURSORS = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
   };
 
@@ -89,9 +89,9 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  time.timeZone = "America/Chicago";
-  time.hardwareClockInLocalTime = false;
-  i18n.defaultLocale = "en_US.UTF-8";
+  time.timeZone = variable.timeZone;
+  time.hardwareClockInLocalTime = true;
+  i18n.defaultLocale = variable.defaultLocale;
 
   hardware.opengl = {
     enable = true;
@@ -100,26 +100,9 @@
   };
 
   services.xserver.enable = true;
-  services.xserver.videoDrivers = ["nvidia"];
   services.displayManager.autoLogin = {
     enable = true;
     user = "angerzen";
-  };
-
-  hardware = {
-    # bluetooth = {
-    #   enable = true;
-    #   powerOnBoot = true;
-    # };
-    nvidia = {
-      modesetting.enable = true;
-      powerManagement.enable = true;
-      powerManagement.finegrained = false;
-      open = false;
-      nvidiaSettings = true;
-      forceFullCompositionPipeline = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-    };
   };
 
   networking = {
@@ -140,18 +123,13 @@
     rtkit.enable = true;
     sudo.enable = true;
     pam.services.hyprlock = {};
+    pam.services.swaylock = {};
     sudo.wheelNeedsPassword = false;
   };
 
   programs = {
     dconf.enable = true;
-    steam.enable = true;
     direnv.enable = true;
-    # _1password.enable = true;
-    # _1password-gui = {
-    #   enable = true;
-    #   polkitPolicyOwners = ["angerzen"];
-    # };
     streamdeck-ui = {
       enable = true;
       autoStart = true;

@@ -5,7 +5,7 @@
 }: {
   home.packages = with pkgs; [waypaper];
 
-  xdg.configFile."hypr/waypaper.ini".text = ''
+  xdg.configFile."waypaper/config.ini".text = ''
     [Settings]
     language = en
     folder = /home/angerzen/Pictures/wallpapers
