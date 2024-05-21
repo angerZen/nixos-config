@@ -5,6 +5,9 @@
 }: {
   imports = [
     ./swww.nix
+    ./hyperidle.nix
+    ./hyperlock.nix
+    ./waypaper.nix
   ];
 
   systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];

@@ -11,27 +11,28 @@
     # If you want to use home-manager modules from other flakes (such as nix-colors):
     # inputs.nix-colors.homeManagerModule
 
-    ./firefox
-    ./discord
+    ./apps/firefox
+    ./apps/discord
     ./scripts
-    ./hyprland
+    ./desktop/hyprland
 
     ./games
 
-    ./mako
-    ./waybar
-    ./wlogout
-    ./wayland/rofi
+    ./apps/mako
+    ./apps/waybar
+    ./apps/wlogout
+    ./apps/wofi
 
-    ./qmk
-    ./vscode
-    ./git
-    ./utilities/bat
-    ./utilities/neofetch
-    ./utilities/btop
+    ./apps/qmk
+    ./apps/vscode
+    ./apps/git
+    ./apps/bat
+    ./apps/neofetch
+    ./apps/btop
+    ./apps/cider
 
-    ./pywal
-    ./gtk
+    ./apps/pywal
+    ./apps/gtk
   ];
 
   nixpkgs = {
@@ -63,37 +64,16 @@
 
     # utilites
     unzip
-    btop
-    playerctl
-    pamixer
-    xfce.thunar
-    neofetch
-    zathura
     pcmanfm
 
     # Multimedia
-    mpv
     imv
-    cider
 
     # Nixos
     nix-prefetch-github
-
-    (python311.withPackages (ps:
-      with ps; [
-        requests
-        datetime
-      ]))
-
-    wofi
   ];
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
-
   programs.home-manager.enable = true;
-  programs.git.enable = true;
 
   systemd.user.startServices = "sd-switch";
 

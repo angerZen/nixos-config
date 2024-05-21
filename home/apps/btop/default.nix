@@ -1,4 +1,5 @@
-{
+{pkgs, ...}: {
+  programs.btop.enable = true;
   xdg.configFile."btop/btop.conf".text = ''
 
                #? Config file for btop v. 1.2.13

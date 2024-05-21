@@ -21,6 +21,12 @@
 
     inputs.swww.url = "github:LGFae/swww";
 
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     alejandra = {
       url = "github:kamadorueda/alejandra";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -30,38 +36,31 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = inputs @ {
+  outputs = {
     self,
     nixpkgs,
-    home-manager,
-    hyprland,
-    nixos-hardware,
-    nur,
     ...
-  }: {
+  } @ inputs: {
     nixosConfigurations = {
       ganymede = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs;};
-        modules = [./nixos/ganymede/configuration.nix];
+        modules = [
+          inputs.stylix.nixosModules.stylix
+          inputs.nur.nixosModules.nur
+          inputs.home-manager.nixosModules.default
+          ./nixos/hosts/ganymede/configuration.nix
+        ];
       };
       io = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs;};
-        modules = [./nixos/io/configuration.nix];
-      };
-    };
-
-    homeConfigurations = {
-      "angerzen@ganymede" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [./home/ganymede.nix];
-      };
-      "angerzen@io" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {inherit inputs outputs;};
-        modules = [./home/io.nix];
+        modules = [
+          inputs.stylix.nixosModules.stylix
+          inputs.nur.nixosModules.nur
+          inputs.home-manager.nixosModules.default
+          ./nixos/hosts/io/configuration.nix
+        ];
       };
     };
   };
