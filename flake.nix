@@ -21,12 +21,6 @@
 
     inputs.swww.url = "github:LGFae/swww";
 
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-
     alejandra = {
       url = "github:kamadorueda/alejandra";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,7 +40,6 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs;};
         modules = [
-          inputs.stylix.nixosModules.stylix
           inputs.nur.nixosModules.nur
           inputs.home-manager.nixosModules.default
           ./nixos/hosts/ganymede/configuration.nix
@@ -56,7 +49,6 @@
         system = "x86_64-linux";
         specialArgs = {inherit inputs outputs;};
         modules = [
-          inputs.stylix.nixosModules.stylix
           inputs.nur.nixosModules.nur
           inputs.home-manager.nixosModules.default
           ./nixos/hosts/io/configuration.nix

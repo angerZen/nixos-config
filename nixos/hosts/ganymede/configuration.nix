@@ -78,18 +78,6 @@
     NIXOS_OZONE_WL = "1";
   };
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
   time.timeZone = variable.timeZone;
   time.hardwareClockInLocalTime = true;
   i18n.defaultLocale = variable.defaultLocale;
@@ -156,7 +144,6 @@
     openmoji-color
   ];
 
-  # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
   users.users = {
     angerzen = {
       isNormalUser = true;
