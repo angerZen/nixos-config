@@ -38,19 +38,27 @@
     nixosConfigurations = {
       ganymede = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit inputs;};
         modules = [
           inputs.nur.nixosModules.nur
-          inputs.home-manager.nixosModules.default
+          inputs.home-manager.nixosModules.home-manager
+          inputs.hyprland.nixosModules.hyprland
+          inputs.swww.nixosModules.swww
+          inputs.alejandra.nixosModules.alejandra
+          inputs.apple-fonts.nixosModules.apple-fonts
           ./nixos/hosts/ganymede/configuration.nix
         ];
       };
       io = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {inherit inputs outputs;};
+        specialArgs = {inherit inputs;};
         modules = [
           inputs.nur.nixosModules.nur
-          inputs.home-manager.nixosModules.default
+          inputs.home-manager.nixosModules.home-manager
+          inputs.hyprland.nixosModules.hyprland
+          inputs.swww.nixosModules.swww
+          inputs.alejandra.nixosModules.alejandra
+          inputs.apple-fonts.nixosModules.apple-fonts
           ./nixos/hosts/io/configuration.nix
         ];
       };
